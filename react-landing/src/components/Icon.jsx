@@ -2,7 +2,7 @@ import PropTypes from "prop-types"
 
 export default function Icon({children}) {
     return (
-        <div className="icon w-5 h-5">
+        <div className="icon flex justify-center items-center w-5 h-5">
             {children}
         </div>
     )

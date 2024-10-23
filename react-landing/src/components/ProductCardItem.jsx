@@ -1,3 +1,4 @@
+import Button from "./Button";
 
 export default function ProductCardItem() {
     return (
@@ -11,7 +12,8 @@ export default function ProductCardItem() {
                 </div>
             </div>
             <div className="cart-item__button">
-                <button>X</button>
+                <Button icon="icon-remove-item">
+                </Button>
             </div>
         </div>
     )
