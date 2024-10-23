@@ -1,8 +1,9 @@
 import Button from "./Button";
+import Icon from "./Icon";
 
 export default function ProductCardItem() {
     return (
-        <div className="cart-item py-4 border-b flex flex-row justify-between">
+        <div className="cart-item py-4 border-b flex flex-row justify-between items-center">
             <div className="cart-item__content">
                 <p className="cart-item__content__name text-sm font-semibold mb-2">Classic Tiramisu</p>
                 <div className="cart-item__details text-sm font-regular flex flex-row gap-2">
@@ -12,7 +13,10 @@ export default function ProductCardItem() {
                 </div>
             </div>
             <div className="cart-item__button">
-                <Button icon="icon-remove-item">
+                <Button icon={true}>
+                    <Icon extraClasses="border border-rose-300 rounded-full invert-0 hover:invert">
+                        <img src="/assets/images/icon-remove-item.svg" alt="icon" />
+                    </Icon>
                 </Button>
             </div>
         </div>
