@@ -35,7 +35,7 @@ export default function ProductItem({product}){
             <div className="product-item__content flex flex-col gap-1.5 font-semibold">
                 <p className="text-sm text-rose-500">{product.category}</p>
                 <p className="text-base">{product.name}</p>
-                <p className="text-base text-red">${product.price}</p>
+                <p className="text-base text-red">${product.price.toFixed(2)}</p>
             </div>
         </div>
     )
