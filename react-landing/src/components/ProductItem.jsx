@@ -6,15 +6,48 @@ import Counter from "./Counter";
 
 export default function ProductItem({product}){
     const [isCounterVisible, setCounterVisible] = useState(false);
-    function handleClick() {
+    const [count, setCount] = useState(1);
+    
+    function handleClickInitCounter() {
         setCounterVisible(true);
     }
+    /* FUNCTION TO DECREMENT COUNTER */
+    function handleDecrement() {
+        /* OPCION A */
+        if(count > 1) {
+            setCount(count => count - 1);
+        } else {
+            setCounterVisible(false);
+            setCount(1);
+        }
+        /* OPCION B */
+        /* setCount((currentCount) => {
+            const newCount = currentCount - 1;
+            if (newCount === 0) {
+                setCounterVisible(false);
+                setCount(1)
+            }
+            return newCount;
+        }); */
+        /* BENJY */
+        /*  if (count === 0) {
+            setCounterVisible(false);
+            setCount(1);
+        }
+        setCount(count - 1); */
+    }
+
+    /* FUNCTION TO INCREMENT COUNTER */
+    function handleIncrement() {
+        setCount(count => count + 1);
+        console.log(count);
+    }
     const buttonContent = 
-        isCounterVisible ? 
+        isCounterVisible  ? 
             (
-                <Counter />
+                <Counter value={count} onIncrement={handleIncrement} onDecrement={handleDecrement}/>
             ) : (
-                <Button type="light" onClick={handleClick}>
+                <Button type="light" onClick={handleClickInitCounter}>
                     <Icon>
                         <img src="./assets/images/icon-add-to-cart.svg" alt="" />
                     </Icon>
