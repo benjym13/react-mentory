@@ -15,8 +15,8 @@ export default function ShoppingCart({ products }) {
         {products.length === 0 ?
           <EmptyShoppingCart /> :
           <>
-            <ProductCartList products={products} />
-            <ShoppingCartTotalPrice products={products} />
+            <ProductCartList items={products} />
+            <ShoppingCartTotalPrice orderItems={products} />
             <Banner>
               <Icon>
                 <img src="./assets/images/icon-carbon-neutral.svg" alt="" />

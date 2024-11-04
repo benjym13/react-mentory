@@ -2,9 +2,9 @@ import PropTypes from "prop-types";
 import { formatCurrency } from "../lib/formatcurrency";
 
 
-export default function ShoppingCartTotalPrice({ products }) {
+export default function ShoppingCartTotalPrice({ orderItems }) {
 
-    const totalPrice = products.reduce((acc, item) => {
+    const totalPrice = orderItems.reduce((acc, item) => {
         return acc + item.price * item.count;
     }, 0);
 
@@ -20,7 +20,7 @@ export default function ShoppingCartTotalPrice({ products }) {
     )
 }
 ShoppingCartTotalPrice.propTypes = {
-    products: PropTypes.arrayOf(
+    orderItems: PropTypes.arrayOf(
         PropTypes.shape(
             {
                 count: PropTypes.number.isRequired,

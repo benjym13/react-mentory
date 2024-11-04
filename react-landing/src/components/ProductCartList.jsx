@@ -3,20 +3,20 @@ import ProductCardItem from "./ProductCardItem";
 import PropTypes from "prop-types";
 
 
-export default function ProductCartList({ products }) {
+export default function ProductCartList({ items }) {
     /* CREAR UNA VARIABLE O UN COMPONENTE */
     const memoizedProductCardList = useMemo(() => {
-        return products.map((product, index) => (
+        return items.map((product, index) => (
             <ProductCardItem product={product} key={index + 1} />
         ));
-    }, [products])
+    }, [items])
     return (
         <div className="shopping-cart__order-list">{memoizedProductCardList}</div>
     )
 }
 
 ProductCartList.propTypes = {
-    products: PropTypes.arrayOf(
+    items: PropTypes.arrayOf(
         PropTypes.shape(
             {
                 count: PropTypes.number.isRequired,
