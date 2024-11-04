@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
-import Button from './Button';
-import Icon from './Icon';
 import { useState } from 'react';
 import Counter from './Counter';
+import AddToCartButton from './AddToCartButton';
+import { formatCurrency } from '../lib/formatcurrency';
 
 export default function ProductItem({ product }) {
   const [isCounterVisible, setCounterVisible] = useState(false);
@@ -13,28 +13,12 @@ export default function ProductItem({ product }) {
   }
   /* FUNCTION TO DECREMENT COUNTER */
   function handleDecrement() {
-    /* OPCION A */
     if (count > 1) {
       setCount((count) => count - 1);
     } else {
       setCounterVisible(false);
       setCount(1);
     }
-    /* OPCION B */
-    /* setCount((currentCount) => {
-            const newCount = currentCount - 1;
-            if (newCount === 0) {
-                setCounterVisible(false);
-                setCount(1)
-            }
-            return newCount;
-        }); */
-    /* BENJY */
-    /*  if (count === 0) {
-            setCounterVisible(false);
-            setCount(1);
-        }
-        setCount(count - 1); */
   }
 
   /* FUNCTION TO INCREMENT COUNTER */
@@ -44,17 +28,14 @@ export default function ProductItem({ product }) {
   }
   const buttonContent = isCounterVisible ? (
     <Counter
-      value={count}
+      quantity={count}
       onIncrement={handleIncrement}
       onDecrement={handleDecrement}
     />
   ) : (
-    <Button type="light" onClick={handleClickInitCounter}>
-      <Icon>
-        <img src="./assets/images/icon-add-to-cart.svg" alt="" />
-      </Icon>
-      <p>Add to cart</p>
-    </Button>
+    <AddToCartButton
+      onClick={handleClickInitCounter}
+    />
   );
 
   return (
@@ -74,7 +55,7 @@ export default function ProductItem({ product }) {
       <div className="product-item__content flex flex-col gap-1.5 font-semibold">
         <p className="text-sm text-rose-500">{product.category}</p>
         <p className="text-base">{product.name}</p>
-        <p className="text-base text-red">${product.price.toFixed(2)}</p>
+        <p className="text-base text-red">{formatCurrency(product.price)}</p>
       </div>
     </div>
   );

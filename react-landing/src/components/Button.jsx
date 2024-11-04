@@ -12,10 +12,10 @@ export default function Button({
   type = 'dark',
 }) {
   const iconStyles = icon ? 'bg-transparent' : 'w-full py-3';
-  const commom =
+  const common =
     'rounded-full flex justify-center items-center gap-3 text-sm  font-semibold text-center';
   const buttonType = BUTTON_TYPES[type];
-  const styles = `${commom}, ${buttonType} ${iconStyles}`.trim();
+  const styles = `${common} ${buttonType} ${iconStyles}`.trim();
 
   return (
     <button className={styles} type="button" onClick={onClick}>

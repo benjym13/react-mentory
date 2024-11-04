@@ -2,20 +2,16 @@ import Button from './Button';
 import Icon from './Icon';
 import PropTypes from 'prop-types';
 
-export default function Counter({ value, onDecrement, onIncrement }) {
-  /* function handleClickDecrement() {
-        console.log(value - 1);
-        return value - 1;
-    } */
+export default function Counter({ quantity, onDecrement, onIncrement }) {
   return (
     <div className="counter w-full p-3 rounded-full bg-red text-white flex justify-between items-center gap-3 text-sm  font-semibold text-center">
-      <Button icon={true} onClick={onDecrement}>
+      <Button icon onClick={onDecrement}>
         <Icon extraClasses="border border-white rounded-full">
           <img src="/assets/images/icon-decrement-quantity.svg" alt="icon" />
         </Icon>
       </Button>
-      <span className="count">{value}</span>
-      <Button icon={true} onClick={onIncrement}>
+      <span className="count">{quantity}</span>
+      <Button icon onClick={onIncrement}>
         <Icon extraClasses="border border-white rounded-full">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -36,7 +32,7 @@ export default function Counter({ value, onDecrement, onIncrement }) {
 }
 
 Counter.propTypes = {
-  value: PropTypes.number.isRequired,
+  quantity: PropTypes.number.isRequired,
   onDecrement: PropTypes.func.isRequired,
   onIncrement: PropTypes.func.isRequired,
 };
