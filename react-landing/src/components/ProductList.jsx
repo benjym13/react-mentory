@@ -1,14 +1,20 @@
 import PropTypes from 'prop-types';
 import ProductItem from './ProductItem';
-
+import { v4 as uuidv4 } from 'uuid';
 export default function ProductList({ products }) {
-  const productItems = products.map((product, id) =>
+
+  const productsWithIDs = products.map((product) => ({
+    ...product,
+    id: uuidv4()
+  }))
+
+  const productItems = productsWithIDs.map((product) =>
   (
-    <li className="col-span-2" key={id}>
+    <li className="col-span-2" key={product.id} data-id={product.id}>
       <ProductItem product={product} />
     </li>
-  )
-  )
+  ))
+
   return (
     <div>
       <div className="product-list__container">
