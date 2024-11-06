@@ -1,15 +1,16 @@
 import Banner from './Banner';
-import Button from './Button';
 import Icon from './Icon';
 import ProductCartList from './ProductCartList';
 import ShoppingCartTotalPrice from './ShoppingCartTotalPrice';
 import EmptyShoppingCart from './EmptyShoppingCart';
 import { useContext } from 'react';
 import { CartContext } from '../context/cartContext';
+import ConfirmModal from './ConfirmModal';
 
 export default function ShoppingCart() {
 
   const { cart } = useContext(CartContext);
+
   return (
     <div className="shopping-cart p-8 bg-white rounded-lg">
       <div className="shopping-cart__container">
@@ -28,7 +29,7 @@ export default function ShoppingCart() {
               </p>
             </Banner>
             <div className="mt-6">
-              <Button>Confirm Order</Button>
+              <ConfirmModal />
             </div>
           </>
         }

@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import ProductCardItem from "./ProductCardItem";
+import ProductCartItem from "./ProductCartItem";
 import PropTypes from "prop-types";
 
 
@@ -8,7 +8,7 @@ export default function ProductCartList({ items }) {
     const memoizedProductCardList = useMemo(() => {
         return items.map((product) => (
             <li key={product.id} data-id={product.id}>
-                <ProductCardItem product={product} />
+                <ProductCartItem product={product} />
             </li>
 
         ));

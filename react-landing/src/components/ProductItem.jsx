@@ -23,7 +23,8 @@ export default function ProductItem({ product: { id, image, name, category, pric
       id,
       count,
       name,
-      price
+      price,
+      image
     }]);
   }
 
@@ -97,7 +98,7 @@ export default function ProductItem({ product: { id, image, name, category, pric
       <div className="relative">
         <div className={`product-item__img-container flex justify-center overflow-hidden rounded-lg mb-8 ${isCounterVisible ? 'border-2 border-red rounded-lg' : ''}`} >
           <img
-            className="w-full aspect-square{"
+            className="w-full aspect-square"
             src={image.desktop}
             alt={`${name}image`}
           />
