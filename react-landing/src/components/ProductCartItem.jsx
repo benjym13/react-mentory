@@ -1,13 +1,12 @@
 import PropTypes from 'prop-types';
+import { useCart } from '../hooks/useCart';
+import { calcProductTotalCost } from '../lib/calcProductTotalCost';
+import { formatCurrency } from '../lib/formatcurrency';
 import Button from './Button';
 import Icon from './Icon';
-import { formatCurrency } from '../lib/formatcurrency';
-import { calcProductTotalCost } from '../lib/calcProductTotalCost';
-import { useContext } from 'react';
-import { CartContext } from '../context/cartContext';
 
 export default function ProductCardItem({ product: { id, count, name, price } }) {
-  const { cart, setCart } = useContext(CartContext);
+  const { cart, setCart } = useCart();
 
   function handleClickRemoveCartItem() {
     setCart(cart.filter(el => (

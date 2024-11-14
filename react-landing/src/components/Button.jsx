@@ -5,6 +5,21 @@ const BUTTON_TYPES = {
     'bg-white text-black border-2 border-rose-300 hover:text-red hover:border-red',
   dark: 'bg-red text-white',
 };
+
+/**
+ * Button component renders a individual button with different visual cases 
+ *
+ * @component
+ * 
+ * @param {{ onClick: any; children: any; icon?: boolean; type?: string; }} param0
+ * @param {*} param0.onClick
+ * @param {*} param0.children
+ * @param {boolean} [param0.icon=false]
+ * @param {string} [param0.type='dark']
+ * 
+ * @returns {JSX.Element} -- styled button with some childrens as icons, img or labels.
+ */
+
 export default function Button({
   onClick,
   children,
