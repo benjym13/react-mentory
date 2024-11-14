@@ -1,16 +1,18 @@
 import { Description, Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react';
-import { useContext, useState } from 'react';
-import { CartContext } from '../context/cartContext';
+import { useState } from 'react';
+import { useCart } from '../hooks/useCart';
 import Button from './Button';
 import ModalProductCartList from './ModalProductCartList';
 import ShoppingCartTotalPrice from './ShoppingCartTotalPrice';
 
 export default function ConfirmModal() {
 
-    const { cart, setCart } = useContext(CartContext);
+    const { cart, setCart } = useCart()
 
     let [isOpen, setIsOpen] = useState(false);
 
+
+    /** @function - function to reset cart list */
     function handleClickResetCart() {
         setCart([]);
     }
@@ -30,7 +32,6 @@ export default function ConfirmModal() {
                         <DialogTitle className="text-4xl font-bold mb-2">Order Confirmed</DialogTitle>
                         <Description className="text-sm font-regular text-rose-400">We hope you enjoy your food!</Description>
                         <div className="modal-cart-items__container bg-rose-50 p-4 rounded-lg inline-block w-full">
-                            <ul></ul>
                             <div className="modal-total w-96">
                                 <ModalProductCartList items={cart} />
                                 <ShoppingCartTotalPrice orderItems={cart} />

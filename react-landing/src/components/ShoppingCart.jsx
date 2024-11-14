@@ -1,16 +1,14 @@
+import { useCart } from '../hooks/useCart';
 import Banner from './Banner';
+import ConfirmModal from './ConfirmModal';
+import EmptyShoppingCart from './EmptyShoppingCart';
 import Icon from './Icon';
 import ProductCartList from './ProductCartList';
 import ShoppingCartTotalPrice from './ShoppingCartTotalPrice';
-import EmptyShoppingCart from './EmptyShoppingCart';
-import { useContext } from 'react';
-import { CartContext } from '../context/cartContext';
-import ConfirmModal from './ConfirmModal';
 
 export default function ShoppingCart() {
 
-  const { cart } = useContext(CartContext);
-
+  const { cart } = useCart();
   return (
     <div className="shopping-cart p-8 bg-white rounded-lg">
       <div className="shopping-cart__container">

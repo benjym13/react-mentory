@@ -1,8 +1,6 @@
 import { useMemo } from "react";
 import ProductCartItem from "./ProductCartItem";
 import PropTypes from "prop-types";
-
-
 export default function ProductCartList({ items }) {
 
     const memoizedProductCardList = useMemo(() => {

@@ -1,53 +1,32 @@
 import PropTypes from 'prop-types';
-import { useContext, useEffect, useState } from 'react';
-import Counter from './Counter';
-import AddToCartButton from './AddToCartButton';
+import { useEffect, useState } from 'react';
+import { useCart } from '../hooks/useCart';
 import { formatCurrency } from '../lib/formatcurrency';
-import { CartContext } from '../context/cartContext';
+import AddToCartButton from './AddToCartButton';
+import Counter from './Counter';
 
 export default function ProductItem({ product: { id, image, name, category, price } }) {
   /* usamos el contexto */
   /* lo desectructuramos para que sea más legible */
-  const { cart, setCart } = useContext(CartContext);
+  const { cart, setCart, addToCart, incrementItemCart, decrementItemCart } = useCart();
 
   /* estado para settear si el counter es visible */
   const [isCounterVisible, setCounterVisible] = useState(false)
 
-
   /* estado para saber el valor del contador */
   const [count, setCount] = useState(1);
 
-
-  function initCart() {
-    setCart((prevCart) => [...prevCart, {
-      id,
-      count,
-      name,
-      price,
-      image
-    }]);
-  }
-
   function handleClickInitCounter() {
+    let product = { id, image, count, name, category, price };
     setCounterVisible(true);
-    initCart();
-  }
-
-  /* FUNCION UTILITARIA */
-  /* Comprobamos si el id ya está en el carrito para reducir el count */
-  /* si no está añadimos el producto */
-  function decrementItemCart(prevCart, id, increment = 1) {
-    return prevCart.map((el) => (
-      el.id === id ? { ...el, count: count - increment } : { ...el }
-    ))
+    addToCart(product)
   }
 
   /* FUNCTION TO DECREMENT COUNTER */
   function handleDecrement() {
     if (count > 1) {
       setCount((count) => count - 1);
-      /* usamos la función de actualización del estado global */
-      setCart(prevCart => decrementItemCart(prevCart, id));
+      decrementItemCart(count, id);
     } else {
       setCounterVisible(false);
       setCount(1);
@@ -57,20 +36,10 @@ export default function ProductItem({ product: { id, image, name, category, pric
     }
   }
 
-  /* FUNCION UTILITARIA */
-  /* Comprobamos si el id ya está en el carrito para aumentar el count */
-  /* si no está añadimos el producto */
-  function incrementItemCart(prevCart, id, increment = 1) {
-    return prevCart.map((el) => (
-      el.id === id ? { ...el, count: count + increment } : { ...el }
-    ))
-  }
-
   /* FUNCTION TO INCREMENT COUNTER */
   function handleIncrement() {
     setCount((count) => count + 1);
-    /* usamos la función de actualización del estado global */
-    setCart(prevCart => incrementItemCart(prevCart, id));
+    incrementItemCart(count, id)
   }
 
   useEffect(() => {
