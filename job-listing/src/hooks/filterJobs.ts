@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { useFilter } from './useFilter';
 import { DataRaw } from '../models/models';
-import { normalizeJobList } from '../lib/normaliceData';
+import { normalizeJobList } from '../lib/normalizeData';
 
 export function useFilterJobs(data: DataRaw[]) {
   const { filters } = useFilter();
