@@ -1,3 +1,4 @@
+// function para mappear las skill en una sola propiedad
 export function mappedSkills(
   lang: string[],
   tools: string[],

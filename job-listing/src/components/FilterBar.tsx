@@ -2,8 +2,6 @@ import { useMemo } from 'react';
 import { useFilter } from '../hooks/useFilter';
 import Chip from './Chip';
 
-export interface IAppProps {}
-
 export default function FilterBar() {
   const { filters } = useFilter();
 

@@ -1,6 +1,7 @@
 import { Job } from '../models/models';
 import Tag from './Tag';
 import ChipList from './ChipList';
+import { Link } from 'react-router-dom';
 
 export default function JobCard({
   company,
@@ -12,6 +13,7 @@ export default function JobCard({
   skills,
   contract,
   date,
+  id,
 }: Job) {
   const featuredCard =
     date === '1d ago' ? 'border-l-4 border-solid border-primary-cyan-500' : '';
@@ -22,7 +24,9 @@ export default function JobCard({
     >
       <div className="job-card__container flex items-center gap-x-5">
         <div className="job-card__img">
-          <img src={`./assets/${logo}`} alt="company-logo" />
+          <Link to={`/job/${id}`}>
+            <img src={`./assets/${logo}`} alt="company-logo" />
+          </Link>
         </div>
         <div className="job-card__content">
           <div className="job-card__content__head flex align-baseline gap-x-4 pb-1">
@@ -49,7 +53,9 @@ export default function JobCard({
             </div>
           </div>
           <div className="job-card__content__role font-semibold">
-            <p>{position}</p>
+            <Link to={`/job/${id}`}>
+              <p>{position}</p>
+            </Link>
           </div>
           <div className="job-card__content__footer flex items-center gap-2">
             <p className="text-gray-500 font-medium">{date}</p>

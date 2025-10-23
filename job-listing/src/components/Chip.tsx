@@ -9,6 +9,7 @@ export default function Chip({ label, onHover }: Chip) {
     setFilters((prev: string[]) =>
       filters.includes(label) ? prev : [...prev, label]
     );
+    console.log(filters);
   }
   function handleClickDeleteFilter() {
     setFilters((prev: string[]) =>
